@@ -27,7 +27,28 @@ function AddBeerPage() {
   // 1. Create a function to handle the form submission and send the form data to the Beers API to create a new beer.
   // 2. Use axios to make a POST request to the Beers API.
   // 3. Once the beer is created, navigate the user to the page showing the list of all beers.
-
+  const handleAddBeer = async (pizza) => {
+    pizza.preventDefault();
+    const myNewBeer = {
+      name,
+      tagline,
+      description,
+      image_url: imageUrl,
+      first_brewed: firstBrewed,
+      brewer_tips: brewersTips,
+      attenuation_level: attenuationLevel,
+      contributed_by: contributedBy,
+    };
+    try {
+      const { data } = await axios.post(
+        "https://ih-beers-api2.herokuapp.com/beers/new",
+        myNewBeer
+      );
+      console.log(data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
 
   // Structure and the content of the page showing the form for adding a new beer. You can leave this as it is.
